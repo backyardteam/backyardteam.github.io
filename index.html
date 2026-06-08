@@ -43,6 +43,7 @@ a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
 h1,h2,h3,h4{font-family:'Plus Jakarta Sans','Inter',sans-serif;letter-spacing:-.02em;line-height:1.1;font-weight:700}
 :focus-visible{outline:2px solid #60a5fa;outline-offset:3px;border-radius:8px}
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .container{max-width:var(--container);margin:0 auto;padding:0 24px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#a5b4fc;padding:8px 14px;border:1px solid var(--card-border);border-radius:999px;background:var(--card);backdrop-filter:blur(8px)}
 .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--grad-bc)}
@@ -58,6 +59,8 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans','Inter',sans-serif;letter-spacing:-.
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px -12px rgba(37,99,235,.7)}
 .btn-ghost{background:rgba(255,255,255,.04);border:1px solid var(--card-border);color:#fff}
 .btn-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+.btn-wa{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;box-shadow:0 10px 30px -10px rgba(34,197,94,.6)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 18px 40px -12px rgba(34,197,94,.7)}
 
 /* ============ NAVBAR ============ */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:padding .25s ease,background .25s ease,border-color .25s ease}
@@ -112,10 +115,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans','Inter',sans-serif;letter-spacing:-.
 .kpi .label{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:.12em}
 .kpi .val{font-family:'Plus Jakarta Sans';font-size:22px;font-weight:700;margin-top:4px}
 .kpi .delta{font-size:11px;color:#34d399;margin-top:2px;display:flex;align-items:center;gap:4px}
-.kpi.violet .val{color:#c4b5fd}
-.kpi.cyan .val{color:#67e8f9}
-.kpi.blue .val{color:#93c5fd}
-.kpi.green .val{color:#86efac}
+.kpi.violet .val{color:#c4b5fd}.kpi.cyan .val{color:#67e8f9}.kpi.blue .val{color:#93c5fd}.kpi.green .val{color:#86efac}
 .chart{height:120px;border-radius:12px;background:rgba(255,255,255,.02);border:1px solid var(--card-border);padding:12px;position:relative;overflow:hidden}
 .chart svg{width:100%;height:100%}
 .dash-foot{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
@@ -125,7 +125,6 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans','Inter',sans-serif;letter-spacing:-.
 .float-badge.b1{top:-18px;left:-22px;animation-delay:-2s}
 .float-badge.b2{bottom:-14px;right:-18px;animation-delay:-4s}
 .float-badge .d{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 12px #34d399}
-
 @media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:48px}.float-badge.b1,.float-badge.b2{display:none}}
 
 /* ============ TRUST ============ */
@@ -155,9 +154,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans','Inter',sans-serif;letter-spacing:-.
 
 /* ============ SERVICES ============ */
 .svc-card{padding:30px;border-radius:18px;background:var(--card);border:1px solid var(--card-border);transition:transform .3s,border-color .3s,background .3s;position:relative;overflow:hidden}
-.svc-card::after{content:"";position:absolute;inset:-1px;border-radius:18px;background:linear-gradient(135deg,rgba(37,99,235,.0),rgba(139,92,246,.0));opacity:0;transition:opacity .35s}
 .svc-card:hover{transform:translateY(-4px);border-color:rgba(99,102,241,.35);background:rgba(255,255,255,.04)}
-.svc-card:hover::after{opacity:1}
 .svc-icon{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:var(--grad-bp);margin-bottom:18px;box-shadow:0 12px 28px -10px rgba(99,102,241,.6)}
 .svc-icon svg{width:24px;height:24px;color:#fff}
 .svc-card h3{font-size:19px;margin-bottom:8px}
@@ -190,7 +187,30 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans','Inter',sans-serif;letter-spacing:-.
 .step p{color:var(--muted);font-size:14.5px}
 
 /* ============ CONTACT ============ */
-.contact-card{max-width:860px;margin:0 auto;padding:40px;border-radius:24px;background:linear-gradient(180deg,rgba(17,24,39,.7),rgba(15,23,42,.7));border:1px solid var(--card-border);backdrop-filter:blur(12px);box-shadow:var(--glow)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:32px;max-width:1080px;margin:0 auto;align-items:start}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+.contact-side{padding:32px;border-radius:24px;background:linear-gradient(180deg,rgba(17,24,39,.7),rgba(15,23,42,.7));border:1px solid var(--card-border);backdrop-filter:blur(12px)}
+.contact-side h3{font-size:22px;margin-bottom:8px}
+.contact-side p.sub{color:var(--muted);font-size:14.5px;margin-bottom:22px}
+.contact-list{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.contact-item{display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--card-border);transition:transform .2s,border-color .2s,background .2s}
+.contact-item:hover{transform:translateY(-2px);border-color:rgba(99,102,241,.35);background:rgba(255,255,255,.05)}
+.contact-item .ic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;flex-shrink:0;color:#fff}
+.contact-item.wa .ic{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.contact-item.ig .ic{background:linear-gradient(135deg,#f09433,#dc2743,#bc1888)}
+.contact-item.ln .ic{background:#0a66c2}
+.contact-item.em .ic{background:var(--grad-bp)}
+.contact-item.tg .ic{background:linear-gradient(135deg,#2aabee,#229ed9)}
+.contact-item .ic svg{width:20px;height:20px}
+.contact-item .meta{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+.contact-item .meta .k{font-size:11px;color:#94a3b8;letter-spacing:.12em;text-transform:uppercase}
+.contact-item .meta .v{font-size:14.5px;color:#fff;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.socials{display:flex;gap:10px}
+.soc{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.04);border:1px solid var(--card-border);color:#cbd5e1;transition:transform .2s,color .2s,background .2s,border-color .2s}
+.soc:hover{transform:translateY(-2px);color:#fff;background:rgba(255,255,255,.08);border-color:rgba(99,102,241,.35)}
+.soc svg{width:18px;height:18px}
+
+.contact-card{padding:32px;border-radius:24px;background:linear-gradient(180deg,rgba(17,24,39,.7),rgba(15,23,42,.7));border:1px solid var(--card-border);backdrop-filter:blur(12px);box-shadow:var(--glow)}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:640px){.form-grid{grid-template-columns:1fr}}
 .field{display:flex;flex-direction:column;gap:6px}
@@ -204,6 +224,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans','Inter',sans-serif;letter-spacing:-.
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:rgba(99,102,241,.5);background:rgba(255,255,255,.05)}
 .field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 14px center}
 .field select option{background:#0f172a;color:#fff}
+.form-hint{font-size:12.5px;color:#64748b;margin-top:10px;display:flex;align-items:center;gap:8px}
 
 /* ============ WHATSAPP FAB ============ */
 .fab{position:fixed;right:22px;bottom:22px;z-index:90;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#16a34a);display:grid;place-items:center;box-shadow:0 16px 40px -10px rgba(34,197,94,.6),0 0 0 0 rgba(34,197,94,.5);animation:pulse 2.2s infinite}
@@ -218,6 +239,7 @@ footer{padding:64px 0 32px;border-top:1px solid var(--border);margin-top:80px}
 .foot-grid a{display:block;color:#cbd5e1;font-size:14.5px;padding:6px 0;transition:color .2s}
 .foot-grid a:hover{color:#fff}
 .foot-about p{color:var(--muted);font-size:14px;margin-top:14px;max-width:340px}
+.foot-socials{display:flex;gap:10px;margin-top:18px}
 .foot-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:13px;flex-wrap:wrap;gap:12px}
 
 /* ============ REVEAL ============ */
@@ -225,9 +247,9 @@ footer{padding:64px 0 32px;border-top:1px solid var(--border);margin-top:80px}
 .reveal.in{opacity:1;transform:none}
 
 /* ============ TOAST ============ */
-.toast{position:fixed;bottom:100px;right:22px;z-index:95;padding:14px 18px;border-radius:12px;background:rgba(15,23,42,.95);border:1px solid rgba(34,197,94,.4);color:#fff;font-size:14px;box-shadow:0 18px 40px -12px rgba(0,0,0,.6);transform:translateX(120%);transition:transform .35s ease;display:flex;align-items:center;gap:10px}
+.toast{position:fixed;bottom:100px;right:22px;z-index:95;padding:14px 18px;border-radius:12px;background:rgba(15,23,42,.95);border:1px solid rgba(34,197,94,.4);color:#fff;font-size:14px;box-shadow:0 18px 40px -12px rgba(0,0,0,.6);transform:translateX(120%);transition:transform .35s ease;display:flex;align-items:center;gap:10px;max-width:320px}
 .toast.show{transform:none}
-.toast svg{color:#34d399}
+.toast svg{color:#34d399;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -239,7 +261,7 @@ footer{padding:64px 0 32px;border-top:1px solid var(--border);margin-top:80px}
       <span class="logo-mark" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4-8 4z"/><path d="M4 12l8 4 8-4"/><path d="M4 17l8 4 8-4"/></svg>
       </span>
-      Backyard Team
+      <span data-brand>Backyard Team</span>
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
       <a href="#services">Layanan</a>
@@ -272,12 +294,15 @@ footer{padding:64px 0 32px;border-top:1px solid var(--border);margin-top:80px}
         </a>
         <a href="#portfolio" class="btn btn-ghost">Lihat Portofolio</a>
       </div>
-      <form class="quick-form reveal" id="quickForm" aria-label="Form konsultasi cepat">
-        <label class="sr-only" for="qName" style="position:absolute;width:1px;height:1px;overflow:hidden">Nama</label>
+      <form class="quick-form reveal" id="quickForm" aria-label="Form konsultasi cepat" data-form="quick">
+        <label class="sr-only" for="qName">Nama</label>
         <input id="qName" name="name" type="text" placeholder="Nama Anda" required />
-        <label class="sr-only" for="qEmail" style="position:absolute;width:1px;height:1px;overflow:hidden">Email</label>
+        <label class="sr-only" for="qEmail">Email</label>
         <input id="qEmail" name="email" type="email" placeholder="Email bisnis" required />
-        <button type="submit" class="btn btn-primary">Konsultasi Gratis</button>
+        <button type="submit" class="btn btn-wa">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.62-6.003C.122 5.281 5.403 0 11.892 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c0 6.49-5.28 11.77-11.77 11.77a11.82 11.82 0 01-5.65-1.44L.057 24z"/></svg>
+          Kirim ke WhatsApp
+        </button>
       </form>
     </div>
 
@@ -325,14 +350,7 @@ footer{padding:64px 0 32px;border-top:1px solid var(--border);margin-top:80px}
 <section class="trust">
   <div class="container">
     <p>Bisnis yang Mempercayai Solusi Digital Modern</p>
-    <div class="logo-row">
-      <div class="l">NORTHWIND</div>
-      <div class="l">ASTRA·CO</div>
-      <div class="l">LUMEN</div>
-      <div class="l">KAYU MAS</div>
-      <div class="l">PANGEA</div>
-      <div class="l">VERA·LABS</div>
-    </div>
+    <div class="logo-row" id="logoRow"></div>
   </div>
 </section>
 
@@ -365,27 +383,17 @@ footer{padding:64px 0 32px;border-top:1px solid var(--border);margin-top:80px}
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span> Tentang Kami</span>
-      <h2>Mengapa Memilih <span class="gradient-text">Backyard Team</span></h2>
+      <h2>Mengapa Memilih <span class="gradient-text" data-brand>Backyard Team</span></h2>
       <p>Kami bukan sekadar vendor teknologi—kami adalah mitra jangka panjang yang fokus pada hasil bisnis.</p>
     </div>
-    <div class="why-grid">
-      <div class="why-card reveal"><div class="num">01 — RESULT FOCUSED</div><h3>Fokus pada Hasil Bisnis</h3><p>Setiap keputusan teknologi diukur berdasarkan dampaknya terhadap efisiensi, pertumbuhan, dan profitabilitas bisnis Anda.</p></div>
-      <div class="why-card reveal"><div class="num">02 — SCALABLE</div><h3>Dibangun untuk Bertumbuh</h3><p>Arsitektur modular dan cloud-native memastikan sistem Anda mampu menangani peningkatan beban dan kebutuhan baru di masa depan.</p></div>
-      <div class="why-card reveal"><div class="num">03 — DATA DRIVEN</div><h3>Pendekatan Berbasis Data</h3><p>Setiap rekomendasi berbasis data nyata—mulai dari audit proses, analitik operasional, hingga pengukuran ROI yang transparan.</p></div>
-      <div class="why-card reveal"><div class="num">04 — PARTNERSHIP</div><h3>Pendampingan Jangka Panjang</h3><p>Dukungan berkelanjutan setelah peluncuran—mulai dari iterasi fitur, optimasi performa, hingga roadmap teknologi multi-tahun.</p></div>
-    </div>
+    <div class="why-grid" id="whyGrid"></div>
   </div>
 </section>
 
 <!-- ============ STATS ============ -->
 <section class="section" style="padding-top:0">
   <div class="container">
-    <div class="stats reveal">
-      <div class="stat"><div class="n" data-count="50" data-suffix="+">0</div><div class="l">Proyek Diselesaikan</div></div>
-      <div class="stat"><div class="n" data-count="95" data-suffix="%">0</div><div class="l">Kepuasan Klien</div></div>
-      <div class="stat"><div class="n" data-count="40" data-suffix="%">0</div><div class="l">Peningkatan Efisiensi</div></div>
-      <div class="stat"><div class="n" data-text="24/7">0</div><div class="l">Dukungan Teknis</div></div>
-    </div>
+    <div class="stats reveal" id="statsRow"></div>
   </div>
 </section>
 
@@ -407,41 +415,63 @@ footer{padding:64px 0 32px;border-top:1px solid var(--border);margin-top:80px}
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span> Kontak</span>
       <h2>Siap Memulai <span class="gradient-text">Transformasi Digital</span>?</h2>
-      <p>Ceritakan tantangan bisnis Anda. Tim kami akan membantu merancang solusi yang tepat dalam sesi konsultasi gratis.</p>
+      <p>Ceritakan tantangan bisnis Anda. Form ini akan langsung membuka WhatsApp dengan pesan terformat—respon cepat dari tim kami.</p>
     </div>
-    <form class="contact-card reveal" id="contactForm">
-      <div class="form-grid">
-        <div class="field"><label for="cName">Nama Lengkap</label><input id="cName" name="name" type="text" required placeholder="Nama Anda" /></div>
-        <div class="field"><label for="cCompany">Perusahaan</label><input id="cCompany" name="company" type="text" placeholder="Nama perusahaan" /></div>
-        <div class="field"><label for="cEmail">Email</label><input id="cEmail" name="email" type="email" required placeholder="email@perusahaan.com" /></div>
-        <div class="field"><label for="cWa">WhatsApp</label><input id="cWa" name="wa" type="tel" required placeholder="+62 812-3456-7890" /></div>
-        <div class="field full"><label for="cType">Jenis Proyek</label>
-          <select id="cType" name="type" required>
-            <option value="">Pilih jenis proyek</option>
-            <option>Website</option><option>Dashboard</option><option>Mobile App</option>
-            <option>AI Solution</option><option>Automation</option><option>Software Kustom</option>
-          </select>
+
+    <div class="contact-grid">
+      <!-- Contact Info -->
+      <aside class="contact-side reveal">
+        <h3>Hubungi Langsung</h3>
+        <p class="sub">Pilih kanal yang paling nyaman untuk Anda. Kami biasanya membalas dalam 1×24 jam pada hari kerja.</p>
+        <div class="contact-list" id="contactList"></div>
+        <div>
+          <div style="font-size:12px;color:#94a3b8;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px">Ikuti Kami</div>
+          <div class="socials" id="socials"></div>
         </div>
-        <div class="field full"><label for="cMsg">Pesan</label><textarea id="cMsg" name="message" placeholder="Ceritakan tantangan atau tujuan bisnis Anda…" required></textarea></div>
-        <div class="field full" style="margin-top:6px"><button type="submit" class="btn btn-primary" style="justify-content:center">Kirim Konsultasi
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </button></div>
-      </div>
-    </form>
+      </aside>
+
+      <!-- Form -->
+      <form class="contact-card reveal" id="contactForm" data-form="full">
+        <div class="form-grid">
+          <div class="field"><label for="cName">Nama Lengkap</label><input id="cName" name="name" type="text" required placeholder="Nama Anda" /></div>
+          <div class="field"><label for="cCompany">Perusahaan</label><input id="cCompany" name="company" type="text" placeholder="Nama perusahaan" /></div>
+          <div class="field"><label for="cEmail">Email</label><input id="cEmail" name="email" type="email" required placeholder="email@perusahaan.com" /></div>
+          <div class="field"><label for="cWa">WhatsApp</label><input id="cWa" name="wa" type="tel" required placeholder="+62 812-3456-7890" /></div>
+          <div class="field full"><label for="cType">Jenis Proyek</label>
+            <select id="cType" name="type" required>
+              <option value="">Pilih jenis proyek</option>
+              <option>Website</option><option>Dashboard</option><option>Mobile App</option>
+              <option>AI Solution</option><option>Automation</option><option>Software Kustom</option>
+            </select>
+          </div>
+          <div class="field full"><label for="cMsg">Pesan</label><textarea id="cMsg" name="message" placeholder="Ceritakan tantangan atau tujuan bisnis Anda…" required></textarea></div>
+          <div class="field full" style="margin-top:6px">
+            <button type="submit" class="btn btn-wa" style="justify-content:center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.62-6.003C.122 5.281 5.403 0 11.892 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c0 6.49-5.28 11.77-11.77 11.77a11.82 11.82 0 01-5.65-1.44L.057 24z"/></svg>
+              Kirim Konsultasi via WhatsApp
+            </button>
+            <div class="form-hint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+              Form akan membuka WhatsApp dengan pesan terformat siap kirim.
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 
 </main>
 
 <!-- ============ WHATSAPP FAB ============ -->
-<a class="fab" href="https://wa.me/6281234567890?text=Halo%20Backyard%20Team%2C%20saya%20ingin%20konsultasi." target="_blank" rel="noopener" aria-label="Hubungi via WhatsApp">
+<a class="fab" id="waFab" href="#" target="_blank" rel="noopener" aria-label="Hubungi via WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.62-6.003C.122 5.281 5.403 0 11.892 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c0 6.49-5.28 11.77-11.77 11.77a11.82 11.82 0 01-5.65-1.44L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.122 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.012-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.173.198-.297.297-.495.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.371-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
 </a>
 
 <!-- ============ TOAST ============ -->
 <div class="toast" id="toast" role="status" aria-live="polite">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-  <span id="toastMsg">Pesan terkirim. Tim kami akan menghubungi Anda segera.</span>
+  <span id="toastMsg">Membuka WhatsApp…</span>
 </div>
 
 <!-- ============ FOOTER ============ -->
@@ -451,9 +481,10 @@ footer{padding:64px 0 32px;border-top:1px solid var(--border);margin-top:80px}
       <div class="foot-about">
         <a href="#top" class="logo">
           <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4-8 4z"/><path d="M4 12l8 4 8-4"/><path d="M4 17l8 4 8-4"/></svg></span>
-          Backyard Team Collective
+          <span data-brand-full>Backyard Team Collective</span>
         </a>
-        <p>Software • Automasi • AI — mitra teknologi yang membantu bisnis mempercepat transformasi digital secara terukur.</p>
+        <p data-tagline>Software • Automasi • AI — mitra teknologi yang membantu bisnis mempercepat transformasi digital secara terukur.</p>
+        <div class="foot-socials" id="footSocials"></div>
       </div>
       <div><h4>Navigasi</h4>
         <a href="#services">Layanan</a><a href="#portfolio">Portofolio</a><a href="#process">Proses</a><a href="#contact">Kontak</a>
@@ -462,42 +493,137 @@ footer{padding:64px 0 32px;border-top:1px solid var(--border);margin-top:80px}
         <a href="#services">Software Kustom</a><a href="#services">Automasi</a><a href="#services">Integrasi AI</a><a href="#services">Analytics</a>
       </div>
       <div><h4>Kontak</h4>
-        <a href="mailto:hello@backyardteam.com">hello@backyardteam.com</a>
-        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener">+62 812-3456-7890</a>
-        <a href="#contact">Konsultasi Gratis</a>
+        <div id="footContacts"></div>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Backyard Team Collective. All rights reserved.</span>
+      <span id="copyright">© 2026 Backyard Team Collective. All rights reserved.</span>
       <span>Made with care in Indonesia</span>
     </div>
   </div>
 </footer>
 
 <script>
-/* ============ NAV SCROLL ============ */
-const nav = document.getElementById('nav');
-const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
-document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+/* ===========================================================================
+   ⚙️  KONFIGURASI — ubah hanya di sini untuk mengganti semua konten dinamis.
+   =========================================================================== */
+const CONFIG = {
+  brand: {
+    name: 'Backyard Team',
+    full: 'Backyard Team Collective',
+    tagline: 'Software • Automasi • AI — mitra teknologi yang membantu bisnis mempercepat transformasi digital secara terukur.',
+    year: new Date().getFullYear(),
+  },
 
-/* ============ MOBILE MENU ============ */
-const menuBtn = document.getElementById('menuBtn');
-const navLinks = document.getElementById('navLinks');
-menuBtn.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  menuBtn.setAttribute('aria-expanded', open);
-});
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  // Kontak utama. waNumber harus format internasional tanpa "+" / spasi (untuk wa.me)
+  contact: {
+    waNumber: '6281234567890',            // dipakai untuk semua link WhatsApp & form submit
+    waDisplay: '+62 812-3456-7890',       // tampilan di UI
+    email: 'hello@backyardteam.com',
+    telegram: '@backyardteam',
+    telegramUrl: 'https://t.me/backyardteam',
+    address: 'Jakarta, Indonesia',
+  },
 
-/* ============ PORTFOLIO DATA ============ */
-const PORTFOLIO = [
-  {t:'Sistem Manajemen Operasional', d:'Platform terpusat untuk mengelola inventori, jadwal, dan tim lapangan secara real-time.', tags:['Web Platform','Dashboard'], grad:'linear-gradient(135deg,#1e3a8a,#0e7490)'},
-  {t:'Dashboard Analytics', d:'Visualisasi data multi-sumber dengan insight prediktif untuk pengambilan keputusan bisnis.', tags:['Analytics','Dashboard'], grad:'linear-gradient(135deg,#312e81,#6d28d9)'},
-  {t:'Platform Reservasi Online', d:'Sistem booking end-to-end dengan pembayaran terintegrasi dan notifikasi otomatis.', tags:['Web Platform','Automation'], grad:'linear-gradient(135deg,#0c4a6e,#0891b2)'},
-  {t:'AI Customer Assistant', d:'Asisten percakapan berbasis LLM yang menjawab pertanyaan pelanggan 24/7 dengan akurasi tinggi.', tags:['AI','Automation'], grad:'linear-gradient(135deg,#4c1d95,#db2777)'},
-  {t:'Aplikasi Mobile Operasional', d:'Aplikasi lapangan untuk tim survei dan operasional dengan dukungan offline-first.', tags:['Mobile','Web Platform'], grad:'linear-gradient(135deg,#065f46,#0d9488)'},
-  {t:'Workflow Automation System', d:'Orkestrasi proses lintas departemen yang menghemat ribuan jam kerja manual per bulan.', tags:['Automation','AI'], grad:'linear-gradient(135deg,#1e40af,#7c3aed)'},
-];
+  // Sosial media — kosongkan/ hapus item untuk menyembunyikannya dari UI
+  socials: [
+    { id:'ig',  label:'Instagram', handle:'@backyardteam',   url:'https://instagram.com/backyardteam' },
+    { id:'ln',  label:'LinkedIn',  handle:'Backyard Team',   url:'https://linkedin.com/company/backyardteam' },
+    { id:'tg',  label:'Telegram',  handle:'@backyardteam',   url:'https://t.me/backyardteam' },
+    { id:'x',   label:'X / Twitter', handle:'@backyardteam', url:'https://x.com/backyardteam' },
+    { id:'yt',  label:'YouTube',   handle:'Backyard Team',   url:'https://youtube.com/@backyardteam' },
+  ],
+
+  // Pesan default ketika tombol WhatsApp ditekan (tanpa data form)
+  waDefaultMessage: 'Halo Backyard Team, saya tertarik untuk konsultasi mengenai transformasi digital bisnis saya.',
+
+  // Klien / logo trust section
+  clients: ['NORTHWIND','ASTRA·CO','LUMEN','KAYU MAS','PANGEA','VERA·LABS'],
+
+  // Statistik
+  stats: [
+    { value:50, suffix:'+', label:'Proyek Diselesaikan' },
+    { value:95, suffix:'%', label:'Kepuasan Klien' },
+    { value:40, suffix:'%', label:'Peningkatan Efisiensi' },
+    { text:'24/7', label:'Dukungan Teknis' },
+  ],
+
+  // Portofolio
+  portfolio: [
+    {t:'Sistem Manajemen Operasional', d:'Platform terpusat untuk mengelola inventori, jadwal, dan tim lapangan secara real-time.', tags:['Web Platform','Dashboard'], grad:'linear-gradient(135deg,#1e3a8a,#0e7490)'},
+    {t:'Dashboard Analytics', d:'Visualisasi data multi-sumber dengan insight prediktif untuk pengambilan keputusan bisnis.', tags:['Analytics','Dashboard'], grad:'linear-gradient(135deg,#312e81,#6d28d9)'},
+    {t:'Platform Reservasi Online', d:'Sistem booking end-to-end dengan pembayaran terintegrasi dan notifikasi otomatis.', tags:['Web Platform','Automation'], grad:'linear-gradient(135deg,#0c4a6e,#0891b2)'},
+    {t:'AI Customer Assistant', d:'Asisten percakapan berbasis LLM yang menjawab pertanyaan pelanggan 24/7 dengan akurasi tinggi.', tags:['AI','Automation'], grad:'linear-gradient(135deg,#4c1d95,#db2777)'},
+    {t:'Aplikasi Mobile Operasional', d:'Aplikasi lapangan untuk tim survei dan operasional dengan dukungan offline-first.', tags:['Mobile','Web Platform'], grad:'linear-gradient(135deg,#065f46,#0d9488)'},
+    {t:'Workflow Automation System', d:'Orkestrasi proses lintas departemen yang menghemat ribuan jam kerja manual per bulan.', tags:['Automation','AI'], grad:'linear-gradient(135deg,#1e40af,#7c3aed)'},
+  ],
+
+  // Layanan
+  services: [
+    {t:'Pengembangan Software Kustom', d:'Aplikasi web dan platform internal yang dirancang khusus untuk proses bisnis Anda.', i:'code'},
+    {t:'Dashboard & Analytics', d:'Visualisasi data real-time dengan insight yang mendorong keputusan strategis.', i:'chart'},
+    {t:'Automasi Proses Bisnis', d:'Eliminasi pekerjaan manual berulang melalui workflow otomatis lintas sistem.', i:'bolt'},
+    {t:'Integrasi AI', d:'Implementasi LLM, NLP, dan computer vision untuk efisiensi operasional.', i:'ai'},
+    {t:'Platform Internal', d:'Portal karyawan, sistem operasional, dan tools internal berskala enterprise.', i:'layers'},
+    {t:'Konsultasi Teknologi', d:'Roadmap teknologi, audit arsitektur, dan strategi transformasi digital jangka panjang.', i:'compass'},
+  ],
+
+  // Mengapa kami
+  why: [
+    {num:'01 — RESULT FOCUSED', t:'Fokus pada Hasil Bisnis',     d:'Setiap keputusan teknologi diukur berdasarkan dampaknya terhadap efisiensi, pertumbuhan, dan profitabilitas bisnis Anda.'},
+    {num:'02 — SCALABLE',       t:'Dibangun untuk Bertumbuh',    d:'Arsitektur modular dan cloud-native memastikan sistem Anda mampu menangani peningkatan beban dan kebutuhan baru di masa depan.'},
+    {num:'03 — DATA DRIVEN',    t:'Pendekatan Berbasis Data',    d:'Setiap rekomendasi berbasis data nyata—mulai dari audit proses, analitik operasional, hingga pengukuran ROI yang transparan.'},
+    {num:'04 — PARTNERSHIP',    t:'Pendampingan Jangka Panjang', d:'Dukungan berkelanjutan setelah peluncuran—mulai dari iterasi fitur, optimasi performa, hingga roadmap teknologi multi-tahun.'},
+  ],
+
+  // Proses
+  process: [
+    {n:'01', t:'Discovery',     d:'Audit proses bisnis, identifikasi peluang otomasi, dan pemetaan kebutuhan teknologi.'},
+    {n:'02', t:'Strategy',      d:'Penyusunan roadmap teknologi, arsitektur sistem, dan prioritas implementasi.'},
+    {n:'03', t:'Design',        d:'Desain pengalaman pengguna dan antarmuka yang intuitif untuk tim internal maupun pelanggan.'},
+    {n:'04', t:'Development',   d:'Pembangunan sistem dengan praktik engineering modern—iteratif, terdokumentasi, dan teruji.'},
+    {n:'05', t:'Deployment',    d:'Peluncuran terkontrol dengan migrasi data, pelatihan tim, dan monitoring performa.'},
+    {n:'06', t:'Optimization',  d:'Iterasi berkelanjutan berbasis data—peningkatan fitur, performa, dan ROI bisnis.'},
+  ],
+};
+
+/* ============ ICON LIBRARY ============ */
+const ICONS = {
+  code:'<path d="M8 6L2 12l6 6M16 6l6 6-6 6M14 4l-4 16"/>',
+  chart:'<path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/>',
+  bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/>',
+  ai:'<path d="M12 2a3 3 0 013 3v1a4 4 0 014 4v1a3 3 0 010 6v1a4 4 0 01-4 4h-1a3 3 0 01-6 0H7a4 4 0 01-4-4v-1a3 3 0 010-6V9a4 4 0 014-4V5a3 3 0 013-3z"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/><path d="M9 15h6"/>',
+  layers:'<path d="M12 2l10 5-10 5L2 7l10-5z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/>',
+  compass:'<circle cx="12" cy="12" r="10"/><path d="M16 8l-2 6-6 2 2-6 6-2z"/>',
+};
+const SOCIAL_SVG = {
+  wa:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.62-6.003C.122 5.281 5.403 0 11.892 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c0 6.49-5.28 11.77-11.77 11.77a11.82 11.82 0 01-5.65-1.44L.057 24z"/></svg>',
+  ig:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
+  ln:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v15.5H.22V8zm7.6 0h4.37v2.12h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.48 3.04 5.48 6.99v8.75h-4.56v-7.76c0-1.85-.03-4.24-2.58-4.24-2.59 0-2.98 2.02-2.98 4.11v7.89H7.82V8z"/></svg>',
+  tg:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>',
+  x:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.52 7.45L22.5 22h-6.86l-5.36-7.01L4.1 22H1.34l7-8L1.5 2h7.04l4.84 6.4L18.24 2zm-1.2 18h1.8L7.06 4H5.14l11.9 16z"/></svg>',
+  yt:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>',
+  em:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
+};
+
+/* ============ HELPERS ============ */
+const $  = (s, el=document) => el.querySelector(s);
+const $$ = (s, el=document) => [...el.querySelectorAll(s)];
+const waLink = (msg) => `https://wa.me/${CONFIG.contact.waNumber}?text=${encodeURIComponent(msg || CONFIG.waDefaultMessage)}`;
+const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ============ RENDER: brand / footer ============ */
+$$('[data-brand]').forEach(el => el.textContent = CONFIG.brand.name);
+$$('[data-brand-full]').forEach(el => el.textContent = CONFIG.brand.full);
+$('[data-tagline]').textContent = CONFIG.brand.tagline;
+document.title = `${CONFIG.brand.full} — Software, Automasi, & AI untuk Bisnis`;
+$('#copyright').textContent = `© ${CONFIG.brand.year} ${CONFIG.brand.full}. All rights reserved.`;
+$('#waFab').href = waLink();
+
+/* ============ RENDER: trust logos ============ */
+$('#logoRow').innerHTML = CONFIG.clients.map(c => `<div class="l">${escapeHtml(c)}</div>`).join('');
+
+/* ============ RENDER: portfolio ============ */
 const thumbSvg = `<svg class="deco" viewBox="0 0 400 200" preserveAspectRatio="none">
 <defs><linearGradient id="ts" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".18"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient></defs>
 <rect width="400" height="200" fill="url(#ts)"/>
@@ -507,49 +633,80 @@ const thumbSvg = `<svg class="deco" viewBox="0 0 400 200" preserveAspectRatio="n
 </g>
 <g fill="rgba(255,255,255,.85)"><circle cx="80" cy="60" r="3"/><circle cx="160" cy="90" r="3"/><circle cx="260" cy="50" r="3"/><circle cx="340" cy="80" r="3"/></g>
 </svg>`;
-document.getElementById('portfolioGrid').innerHTML = PORTFOLIO.map(p => `
+$('#portfolioGrid').innerHTML = CONFIG.portfolio.map(p => `
   <article class="port-card reveal">
     <div class="thumb"><div class="bg" style="background:${p.grad}"></div>${thumbSvg}<div class="overlay"></div></div>
     <div class="port-body">
-      <h3>${p.t}</h3><p>${p.d}</p>
-      <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <h3>${escapeHtml(p.t)}</h3><p>${escapeHtml(p.d)}</p>
+      <div class="tags">${p.tags.map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>
     </div>
   </article>`).join('');
 
-/* ============ SERVICES DATA ============ */
-const ICONS = {
-  code:'<path d="M8 6L2 12l6 6M16 6l6 6-6 6M14 4l-4 16"/>',
-  chart:'<path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/>',
-  bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/>',
-  ai:'<path d="M12 2a3 3 0 013 3v1a4 4 0 014 4v1a3 3 0 010 6v1a4 4 0 01-4 4h-1a3 3 0 01-6 0H7a4 4 0 01-4-4v-1a3 3 0 010-6V9a4 4 0 014-4V5a3 3 0 013-3z"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/><path d="M9 15h6"/>',
-  layers:'<path d="M12 2l10 5-10 5L2 7l10-5z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/>',
-  compass:'<circle cx="12" cy="12" r="10"/><path d="M16 8l-2 6-6 2 2-6 6-2z"/>',
-};
-const SERVICES = [
-  {t:'Pengembangan Software Kustom', d:'Aplikasi web dan platform internal yang dirancang khusus untuk proses bisnis Anda.', i:ICONS.code},
-  {t:'Dashboard & Analytics', d:'Visualisasi data real-time dengan insight yang mendorong keputusan strategis.', i:ICONS.chart},
-  {t:'Automasi Proses Bisnis', d:'Eliminasi pekerjaan manual berulang melalui workflow otomatis lintas sistem.', i:ICONS.bolt},
-  {t:'Integrasi AI', d:'Implementasi LLM, NLP, dan computer vision untuk efisiensi operasional.', i:ICONS.ai},
-  {t:'Platform Internal', d:'Portal karyawan, sistem operasional, dan tools internal berskala enterprise.', i:ICONS.layers},
-  {t:'Konsultasi Teknologi', d:'Roadmap teknologi, audit arsitektur, dan strategi transformasi digital jangka panjang.', i:ICONS.compass},
-];
-document.getElementById('servicesGrid').innerHTML = SERVICES.map(s => `
+/* ============ RENDER: services ============ */
+$('#servicesGrid').innerHTML = CONFIG.services.map(s => `
   <div class="svc-card reveal">
-    <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${s.i}</svg></div>
-    <h3>${s.t}</h3><p>${s.d}</p>
+    <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[s.i]||ICONS.code}</svg></div>
+    <h3>${escapeHtml(s.t)}</h3><p>${escapeHtml(s.d)}</p>
   </div>`).join('');
 
-/* ============ PROCESS ============ */
-const STEPS = [
-  {n:'01',t:'Discovery',d:'Audit proses bisnis, identifikasi peluang otomasi, dan pemetaan kebutuhan teknologi.'},
-  {n:'02',t:'Strategy',d:'Penyusunan roadmap teknologi, arsitektur sistem, dan prioritas implementasi.'},
-  {n:'03',t:'Design',d:'Desain pengalaman pengguna dan antarmuka yang intuitif untuk tim internal maupun pelanggan.'},
-  {n:'04',t:'Development',d:'Pembangunan sistem dengan praktik engineering modern—iteratif, terdokumentasi, dan teruji.'},
-  {n:'05',t:'Deployment',d:'Peluncuran terkontrol dengan migrasi data, pelatihan tim, dan monitoring performa.'},
-  {n:'06',t:'Optimization',d:'Iterasi berkelanjutan berbasis data—peningkatan fitur, performa, dan ROI bisnis.'},
+/* ============ RENDER: why ============ */
+$('#whyGrid').innerHTML = CONFIG.why.map(w => `
+  <div class="why-card reveal"><div class="num">${escapeHtml(w.num)}</div><h3>${escapeHtml(w.t)}</h3><p>${escapeHtml(w.d)}</p></div>
+`).join('');
+
+/* ============ RENDER: stats ============ */
+$('#statsRow').innerHTML = CONFIG.stats.map(s => {
+  if (s.text) return `<div class="stat"><div class="n" data-text="${escapeHtml(s.text)}">0</div><div class="l">${escapeHtml(s.label)}</div></div>`;
+  return `<div class="stat"><div class="n" data-count="${s.value}" data-suffix="${escapeHtml(s.suffix||'')}">0</div><div class="l">${escapeHtml(s.label)}</div></div>`;
+}).join('');
+
+/* ============ RENDER: process ============ */
+$('#processGrid').innerHTML = CONFIG.process.map(s => `
+  <div class="step reveal"><div class="step-num">${escapeHtml(s.n)}</div><h3>${escapeHtml(s.t)}</h3><p>${escapeHtml(s.d)}</p></div>
+`).join('');
+
+/* ============ RENDER: contact list + socials + footer ============ */
+const contactItems = [
+  { cls:'wa', icon:SOCIAL_SVG.wa, key:'WhatsApp',  val:CONFIG.contact.waDisplay, href:waLink() },
+  { cls:'em', icon:SOCIAL_SVG.em, key:'Email',     val:CONFIG.contact.email,     href:`mailto:${CONFIG.contact.email}` },
 ];
-document.getElementById('processGrid').innerHTML = STEPS.map(s => `
-  <div class="step reveal"><div class="step-num">${s.n}</div><h3>${s.t}</h3><p>${s.d}</p></div>`).join('');
+const igSocial = CONFIG.socials.find(s => s.id==='ig');
+if (igSocial) contactItems.push({ cls:'ig', icon:SOCIAL_SVG.ig, key:'Instagram', val:igSocial.handle, href:igSocial.url });
+const lnSocial = CONFIG.socials.find(s => s.id==='ln');
+if (lnSocial) contactItems.push({ cls:'ln', icon:SOCIAL_SVG.ln, key:'LinkedIn',  val:lnSocial.handle, href:lnSocial.url });
+if (CONFIG.contact.telegramUrl) contactItems.push({ cls:'tg', icon:SOCIAL_SVG.tg, key:'Telegram', val:CONFIG.contact.telegram, href:CONFIG.contact.telegramUrl });
+
+$('#contactList').innerHTML = contactItems.map(c => `
+  <a class="contact-item ${c.cls}" href="${c.href}" target="_blank" rel="noopener">
+    <span class="ic">${c.icon}</span>
+    <span class="meta"><span class="k">${c.key}</span><span class="v">${escapeHtml(c.val)}</span></span>
+  </a>`).join('');
+
+const socialsHtml = CONFIG.socials.map(s => `
+  <a class="soc" href="${s.url}" target="_blank" rel="noopener" aria-label="${escapeHtml(s.label)}" title="${escapeHtml(s.label)} — ${escapeHtml(s.handle)}">
+    ${SOCIAL_SVG[s.id] || SOCIAL_SVG.em}
+  </a>`).join('');
+$('#socials').innerHTML = socialsHtml;
+$('#footSocials').innerHTML = socialsHtml;
+
+$('#footContacts').innerHTML = `
+  <a href="mailto:${CONFIG.contact.email}">${escapeHtml(CONFIG.contact.email)}</a>
+  <a href="${waLink()}" target="_blank" rel="noopener">${escapeHtml(CONFIG.contact.waDisplay)}</a>
+  <a href="#contact">Konsultasi Gratis</a>
+`;
+
+/* ============ NAV SCROLL ============ */
+const nav = $('#nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
+document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+/* ============ MOBILE MENU ============ */
+const menuBtn = $('#menuBtn'), navLinks = $('#navLinks');
+menuBtn.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', open);
+});
+$$('#navLinks a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
 /* ============ REVEAL + COUNTERS ============ */
 const io = new IntersectionObserver((entries) => {
@@ -562,8 +719,8 @@ const io = new IntersectionObserver((entries) => {
     }
   });
 }, {threshold:.15});
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-document.querySelectorAll('[data-count],[data-text]').forEach(el => io.observe(el));
+$$('.reveal').forEach(el => io.observe(el));
+$$('[data-count],[data-text]').forEach(el => io.observe(el));
 
 function animateCount(el){
   const target = +el.dataset.count, suf = el.dataset.suffix || '';
@@ -577,22 +734,46 @@ function animateCount(el){
   requestAnimationFrame(tick);
 }
 
-/* ============ FORMS ============ */
-const toast = document.getElementById('toast'), toastMsg = document.getElementById('toastMsg');
+/* ============ TOAST ============ */
+const toast = $('#toast'), toastMsg = $('#toastMsg');
 function showToast(msg){
   toastMsg.textContent = msg;
   toast.classList.add('show');
   clearTimeout(showToast._t);
-  showToast._t = setTimeout(() => toast.classList.remove('show'), 3800);
+  showToast._t = setTimeout(() => toast.classList.remove('show'), 3500);
 }
-document.getElementById('quickForm').addEventListener('submit', (e) => {
-  e.preventDefault(); e.target.reset();
-  showToast('Terima kasih! Tim kami akan menghubungi Anda dalam 1×24 jam.');
-});
-document.getElementById('contactForm').addEventListener('submit', (e) => {
-  e.preventDefault(); e.target.reset();
-  showToast('Pesan terkirim. Tim Backyard Team akan segera merespons.');
-});
+
+/* ============ FORMS → WhatsApp ============ */
+function buildWaMessage(data){
+  const L = [];
+  L.push(`*Halo ${CONFIG.brand.full}*`);
+  L.push(`Saya tertarik untuk konsultasi mengenai transformasi digital.`);
+  L.push('');
+  L.push('*Detail Konsultasi:*');
+  if (data.name)    L.push(`• Nama: ${data.name}`);
+  if (data.company) L.push(`• Perusahaan: ${data.company}`);
+  if (data.email)   L.push(`• Email: ${data.email}`);
+  if (data.wa)      L.push(`• WhatsApp: ${data.wa}`);
+  if (data.type)    L.push(`• Jenis Proyek: ${data.type}`);
+  if (data.message){ L.push(''); L.push('*Pesan:*'); L.push(data.message); }
+  L.push('');
+  L.push('_Dikirim dari website backyardteam.com_');
+  return L.join('\n');
+}
+
+function handleFormSubmit(e){
+  e.preventDefault();
+  const form = e.currentTarget;
+  const data = Object.fromEntries(new FormData(form).entries());
+  const url = waLink(buildWaMessage(data));
+  showToast('Membuka WhatsApp dengan pesan Anda…');
+  // Buka WhatsApp di tab baru
+  const w = window.open(url, '_blank', 'noopener,noreferrer');
+  // Fallback bila popup diblokir
+  if (!w) window.location.href = url;
+  form.reset();
+}
+$$('form[data-form]').forEach(f => f.addEventListener('submit', handleFormSubmit));
 </script>
 </body>
 </html>
