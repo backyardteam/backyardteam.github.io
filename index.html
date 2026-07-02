@@ -8,6 +8,29 @@
 <meta property="og:title" content="Backyard Team Collective" />
 <meta property="og:description" content="Software, automasi, dan AI untuk pertumbuhan bisnis Anda." />
 <meta property="og:type" content="website" />
+<meta property="og:url" content="https://backyardteam.github.io/" />
+<meta property="og:image" content="https://backyardteam.github.io/og-image.png" />
+<meta property="og:locale" content="id_ID" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Backyard Team Collective" />
+<meta name="twitter:description" content="Software, automasi, dan AI untuk pertumbuhan bisnis Anda." />
+<meta name="twitter:image" content="https://backyardteam.github.io/og-image.png" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#050816" />
+<link rel="canonical" href="https://backyardteam.github.io/" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7l8-4 8 4-8 4z'/%3E%3Cpath d='M4 12l8 4 8-4'/%3E%3Cpath d='M4 17l8 4 8-4'/%3E%3C/svg%3E" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Backyard Team Collective",
+  "description": "Software, automasi, dan AI untuk pertumbuhan bisnis.",
+  "url": "https://backyardteam.github.io/",
+  "email": "backyardteamcollective@gmail.com",
+  "areaServed": "ID",
+  "address": { "@type": "PostalAddress", "addressLocality": "Jakarta", "addressCountry": "ID" }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -44,6 +67,11 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
 h1,h2,h3,h4{font-family:'Plus Jakarta Sans','Inter',sans-serif;letter-spacing:-.02em;line-height:1.1;font-weight:700}
 :focus-visible{outline:2px solid #60a5fa;outline-offset:3px;border-radius:8px}
 .sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip-link{position:fixed;top:-60px;left:12px;z-index:200;background:#2563EB;color:#fff;padding:12px 18px;border-radius:10px;font-weight:600;font-size:14px;transition:top .2s ease}
+.skip-link:focus{top:12px}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
 .container{max-width:var(--container);margin:0 auto;padding:0 24px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#a5b4fc;padding:8px 14px;border:1px solid var(--card-border);border-radius:999px;background:var(--card);backdrop-filter:blur(8px)}
 .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--grad-bc)}
@@ -79,7 +107,11 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans','Inter',sans-serif;letter-spacing:-.
   .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(5,8,22,.95);backdrop-filter:blur(12px);padding:18px 24px;border-bottom:1px solid var(--border);gap:14px;align-items:flex-start}
   .nav-links.open{display:flex}
   .menu-btn{display:flex}
-  .nav-cta .btn{display:none}
+  .nav-cta .btn{padding:10px 14px;font-size:13.5px}
+}
+@media(max-width:480px){
+  .nav-cta .btn span.btn-label-full{display:none}
+  .nav-cta .btn span.btn-label-short{display:inline!important}
 }
 
 /* ============ HERO ============ */
@@ -254,6 +286,8 @@ footer{padding:64px 0 32px;border-top:1px solid var(--border);margin-top:80px}
 </head>
 <body>
 
+<a href="#top" class="skip-link">Lewati ke konten utama</a>
+
 <!-- ============ NAV ============ -->
 <header class="nav" id="nav">
   <div class="container nav-inner">
@@ -271,7 +305,7 @@ footer{padding:64px 0 32px;border-top:1px solid var(--border);margin-top:80px}
       <a href="#contact">Kontak</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-primary" href="#contact">Konsultasi Gratis</a>
+      <a class="btn btn-primary" href="#contact"><span class="btn-label-full">Konsultasi Gratis</span><span class="btn-label-short" aria-hidden="true" style="display:none">Konsultasi</span></a>
       <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -349,7 +383,7 @@ footer{padding:64px 0 32px;border-top:1px solid var(--border);margin-top:80px}
 <!-- ============ TRUST ============ -->
 <section class="trust">
   <div class="container">
-    <p>Bisnis yang Mempercayai Solusi Digital Modern</p>
+    <p>Industri yang Kami Layani</p>
     <div class="logo-row" id="logoRow"></div>
   </div>
 </section>
@@ -516,6 +550,7 @@ const CONFIG = {
   },
 
   // Kontak utama. waNumber harus format internasional tanpa "+" / spasi (untuk wa.me)
+  // ⚠️ GANTI waNumber & waDisplay dengan nomor asli sebelum deploy — nilai di bawah masih contoh.
   contact: {
     waNumber: '6281234567890',            // dipakai untuk semua link WhatsApp & form submit
     waDisplay: '+62 812-3456-7890',       // tampilan di UI
@@ -537,8 +572,8 @@ const CONFIG = {
   // Pesan default ketika tombol WhatsApp ditekan (tanpa data form)
   waDefaultMessage: 'Halo Backyard Team, saya tertarik untuk konsultasi mengenai transformasi digital bisnis saya.',
 
-  // Klien / logo trust section
-  clients: ['NORTHWIND','ASTRA·CO','LUMEN','KAYU MAS','PANGEA','VERA·LABS'],
+  // Kategori industri yang dilayani (ganti dengan logo klien asli bila sudah siap ditampilkan)
+  clients: ['Properti','Pemerintahan','BUMN','Ritel & UMKM','Olahraga','Pariwisata'],
 
   // Statistik
   stats: [
